@@ -1,6 +1,6 @@
 # Getting Started with app17
 
-## Available Scripts
+## To run the application
 
 1. npm install
 2. npm run
