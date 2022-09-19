@@ -5,10 +5,7 @@
 1. npm install
 2. npm run
 
-##
-##
-##
-##
+
 ### `npm start`
 
 Runs the app in the development mode.\
