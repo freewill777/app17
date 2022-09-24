@@ -14,7 +14,7 @@ const Button = styled(ButtonMUI)({
     }
 });
 
-function Banner() {
+function Banner({ clearCompleted }) {
     const [color, setColor] = React.useState('#3a5a40')
     function handleClick() {
         if (color === '#457b9d') {
@@ -47,6 +47,7 @@ function Banner() {
                 />
                 <Button
                     variant="outlined"
+                    onClick={() => clearCompleted()}
                 >
                     clear completed
                 </Button>
