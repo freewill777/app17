@@ -1,6 +1,8 @@
 import React from "react"
 import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import InputBase from '@mui/material/InputBase';
+import Stack from '@mui/material/Stack';
 
 function Banner() {
     const [color, setColor] = React.useState('#3a5a40')
@@ -20,17 +22,25 @@ function Banner() {
                 placeItems: 'center',
             }}
         >
-            <InputBase
-                sx={{
-                    ml: 1,
-                    p: 1,
-                    flex: 1,
-                    color: 'white',
-                    border: '1px solid white',
-                    borderRadius: '4px'
-                }}
-                placeholder="Filter tasks"
-            />
+
+            <Stack spacing={2} direction="row">
+                <InputBase
+                    sx={{
+                        ml: 1,
+                        p: 1,
+                        flex: 1,
+                        color: 'white',
+                        border: '1px solid white',
+                        borderRadius: '4px'
+                    }}
+                    placeholder="Filter tasks"
+                />
+                <Button
+                    variant="outlined"
+                >
+                    clear completed
+                </Button>
+            </Stack>
         </Box>
     )
 }
