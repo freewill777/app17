@@ -1,8 +1,18 @@
 import React from "react"
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
+import { Button as ButtonMUI } from '@mui/material';
 import InputBase from '@mui/material/InputBase';
 import Stack from '@mui/material/Stack';
+import { styled } from '@mui/system';
+
+const Button = styled(ButtonMUI)({
+    color: '#fff',
+    borderColor: '#fff',
+    '&:hover': {
+        color: '#a3b18a',
+        borderColor: '#a3b18a'
+    }
+});
 
 function Banner() {
     const [color, setColor] = React.useState('#3a5a40')
