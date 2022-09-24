@@ -7,16 +7,24 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
+import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
 
-function Task({ item, toggleTask }) {
+function Task({ item, toggleTask, renameTask }) {
     const [editing, setEditing] = React.useState(false)
     const [isEditButtonVisible, setIsEditButtonVisible] = React.useState(false)
     const [taskName, setTaskName] = React.useState(item.task)
+    function handleClose() {
+        setEditing(false)
+    }
+    function handleSubmit() {
+        renameTask(item.id, taskName)
+        setEditing(false)
+    }
     const labelId = `checkbox-list-label-${item.task}`;
     return (
         <ListItem
@@ -48,36 +56,38 @@ function Task({ item, toggleTask }) {
                         inputProps={{ "aria-labelledby": labelId }}
                     />
                 </ListItemIcon>
-                {editing ? (
-                    <>
-                        <TextField
-                            size="small"
-                            id="standard-basic"
-                            variant="standard"
-                            value={taskName}
-                            onChange={(item) => setTaskName(item.target.value)}
+                <Stack spacing={2} direction="row">
+                    {editing ? (
+                        <>
+                            <TextField
+                                size="small"
+                                id="standard-basic"
+                                variant="standard"
+                                value={taskName}
+                                onChange={(item) => setTaskName(item.target.value)}
+                            />
+                            <Button
+                                onClick={handleClose}
+                                variant="contained"
+                                sx={{ ml: .5 }}
+                            >
+                                <CloseIcon />
+                            </Button>
+                            <Button
+                                onClick={handleSubmit}
+                                variant="contained"
+                                sx={{ ml: .5 }}
+                            >
+                                <CheckIcon />
+                            </Button>
+                        </>
+                    ) : (
+                        <ListItemText
+                            id={labelId}
+                            primary={taskName}
                         />
-                        <Button
-                            onClick={() => console.log('')}
-                            variant="contained"
-                            sx={{ ml: .5 }}
-                        >
-                            <CloseIcon />
-                        </Button>
-                        <Button
-                            onClick={() => console.log('')}
-                            variant="contained"
-                            sx={{ ml: .5 }}
-                        >
-                            <CheckIcon />
-                        </Button>
-                    </>
-                ) : (
-                    <ListItemText
-                        id={labelId}
-                        primary={item.task}
-                    />
-                )}
+                    )}
+                </Stack>
             </ListItemButton>
         </ListItem>
     )
