@@ -1,6 +1,6 @@
 import React from "react"
-import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
+import InputBase from '@mui/material/InputBase';
 
 function Banner() {
     const [color, setColor] = React.useState('#457b9d')
@@ -20,16 +20,17 @@ function Banner() {
                 placeItems: 'center',
             }}
         >
-            <Button
-                onClick={handleClick}
-                variant="outlined"
-                style={{
+            <InputBase
+                sx={{
+                    ml: 1,
+                    p: 1,
+                    flex: 1,
                     color: 'white',
-                    border: '1px solid #fff'
+                    border: '1px solid white',
+                    borderRadius: '4px'
                 }}
-            >
-                Change background {color}
-            </Button>
+                placeholder="Filter tasks"
+            />
         </Box>
     )
 }
