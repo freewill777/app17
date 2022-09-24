@@ -12,9 +12,20 @@ export default function App() {
   }
   function toggleTask(id) {
     const taskId = id
-    let newCopy = taskElements.map(task => {
+    const newCopy = taskElements.map(task => {
       if (task.id === Number(taskId)) { // conditia pentru ca elementul sa fie gasit
         return { ...task, complete: !task.complete } // structura returnata pentru elementul gasit
+      } else {
+        return { ...task } // structura returnata pentru restul elementelor
+      }
+    })
+    setTaskElements(newCopy)
+  }
+  function renameTask(id, newTask) {
+    const taskId = id
+    const newCopy = taskElements.map(task => {
+      if (task.id === Number(taskId)) { // conditia pentru ca elementul sa fie gasit
+        return { ...task, task: newTask } // structura returnata pentru elementul gasit
       } else {
         return { ...task } // structura returnata pentru restul elementelor
       }
@@ -24,7 +35,11 @@ export default function App() {
   return (
     <div className="container">
       <Banner clearCompleted={clearCompleted} />
-      <TaskList taskElements={taskElements} toggleTask={toggleTask} />
+      <TaskList
+        taskElements={taskElements}
+        toggleTask={toggleTask}
+        renameTask={renameTask}
+      />
     </div>
   )
 }
