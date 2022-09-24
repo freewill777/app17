@@ -15,24 +15,16 @@ import CloseIcon from '@mui/icons-material/Close';
 
 function Task({ item, toggleTask }) {
     const [editing, setEditing] = React.useState(false)
-    const [isEditButtonVisible, setIsEditButtonVisible] = React.useState(false)
     const [taskName, setTaskName] = React.useState(item.task)
     const labelId = `checkbox-list-label-${item.task}`;
     return (
         <ListItem
             key={item.id}
             disablePadding
-            onMouseEnter={() => setIsEditButtonVisible(true)}
-            onMouseLeave={() => setIsEditButtonVisible(false)}
-            secondaryAction={isEditButtonVisible && (
-                <IconButton
-                    onClick={() => setEditing(!editing)}
-                    sx={{ mr: 1 }}
-                    edge="end"
-                >
+            secondaryAction={
+                <IconButton onClick={() => setEditing(!editing)} sx={{ mr: 1 }} edge="end" aria-label="delete">
                     <ModeEditIcon />
-                </IconButton>
-            )}
+                </IconButton>}
         >
             <ListItemButton
                 role={undefined}
