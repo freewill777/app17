@@ -49,7 +49,7 @@ function Banner({ clearCompleted }) {
                     variant="outlined"
                     onClick={() => clearCompleted()}
                 >
-                    clear completed
+                    Remove completed
                 </Button>
             </Stack>
         </Box>
