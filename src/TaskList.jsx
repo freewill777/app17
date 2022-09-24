@@ -29,9 +29,14 @@ export default function TaskList() {
         })
         setTaskElements(newCopy)
     }
+    function handleFilter() { // SHOW INCOMPLETE TASKS
+        const filtered = taskElements.filter(task => !task.complete)
+        setTaskElements(filtered)
+    }
 
     const materialTaskList = (
         <List sx={{ width: "100%", bgcolor: "background.paper" }} >
+            <button onClick={handleFilter}>Filter elements</button>
             {taskElements.map((item) => {
                 return (
                     <Task item={item} toggleTask={toggleTask} />
