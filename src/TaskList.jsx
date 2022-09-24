@@ -11,6 +11,7 @@ export default function TaskList({ taskElements, toggleTask, renameTask }) {
             {taskElements.map((item) => {
                 return (
                     <Task
+                        key={item.id}
                         item={item}
                         toggleTask={toggleTask}
                         renameTask={renameTask}
