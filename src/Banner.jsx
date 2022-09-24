@@ -14,20 +14,12 @@ const Button = styled(ButtonMUI)({
     }
 });
 
-function Banner({ clearCompleted }) {
-    const [color, setColor] = React.useState('#3a5a40')
-    function handleClick() {
-        if (color === '#457b9d') {
-            setColor('#a8dadc')
-        } else {
-            setColor('#457b9d')
-        }
-    }
+function Banner({ clearCompleted, filterTasks }) {
     return (
         <Box
             style={{
                 height: '25vh',
-                backgroundColor: color,
+                backgroundColor: '#3a5a40',
                 display: 'grid',
                 placeItems: 'center',
             }}
@@ -35,6 +27,7 @@ function Banner({ clearCompleted }) {
 
             <Stack spacing={2} direction="row">
                 <InputBase
+                    onChange={(event) => filterTasks(event.target.value)}
                     sx={{
                         ml: 1,
                         p: 1,

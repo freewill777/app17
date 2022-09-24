@@ -6,7 +6,9 @@ import taskuri from './data.json'
 
 export default function App() {
   const [taskElements, setTaskElements] = React.useState(taskuri)
-  function clearCompleted() { // SHOW INCOMPLETE TASKS
+  const [searchText, setSearchText] = React.useState('')
+  const filteredElements = taskElements.filter(element => element.task.toLowerCase().includes(searchText))
+  function clearCompleted() {
     const filtered = taskElements.filter(task => !task.complete)
     setTaskElements(filtered)
   }
@@ -32,11 +34,18 @@ export default function App() {
     })
     setTaskElements(newCopy)
   }
+
+  function handleSearchText(input) {
+    setSearchText(input);
+  }
   return (
     <div className="container">
-      <Banner clearCompleted={clearCompleted} />
+      <Banner
+        clearCompleted={clearCompleted}
+        filterTasks={handleSearchText}
+      />
       <TaskList
-        taskElements={taskElements}
+        taskElements={filteredElements}
         toggleTask={toggleTask}
         renameTask={renameTask}
       />
