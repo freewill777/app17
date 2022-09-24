@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import InputBase from '@mui/material/InputBase';
 
 function Banner() {
-    const [color, setColor] = React.useState('#457b9d')
+    const [color, setColor] = React.useState('#118ab2')
     function handleClick() {
         if (color === '#457b9d') {
             setColor('#a8dadc')
